@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Language Learning Exercises</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+    }
+  
+    .exercise-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px; /* Added margin between exercise containers */
+    }
+  
+    h1 {
+        text-align: center;
+    }
+  
+    .exercise {
+        margin-bottom: 20px;
+    }
+  
+    .word-pair {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+  
+    .english-word {
+        font-weight: bold;
+    }
+  
+    .hindi-word-input {
+        flex: 1;
+    }
+  
+    .hindi-word {
+        flex: 1;
+        margin-left: 10px;
+    }
+  
+    .submit-btn {
+        display: block;
+        margin: 0 auto;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+  
+    .result {
+        text-align: center;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+<div class="exercise-container">
+    <h1>Exercise-I</h1>
+    <div class="exercise">
+        <p>Match the English words with their Hindi equivalents:</p>
+        <div class="word-pair">
+            <div class="english-word">A. Book</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="c" placeholder="Enter Hindi word">
+            <div class="hindi-word">a.किताब</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">B. Pen</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="a" placeholder="Enter Hindi word">
+            <div class="hindi-word">b.पेन</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">C. Table</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="b" placeholder="Enter Hindi word">
+            <div class="hindi-word">c.तालिका</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">D. Chair</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="d" placeholder="Enter Hindi word">
+            <div class="hindi-word">d.कुर्सी</div>
+        </div>
+    </div>
+    <button class="submit-btn">Submit</button>
+    <div class="result"></div>
+</div>
+
+<div class="exercise-container">
+    <h1>Exercise-II</h1>
+    <div class="exercise">
+        <p>Match the English words with their Hindi equivalents:</p>
+        <div class="word-pair">
+            <div class="english-word">E. Dog</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="e" placeholder="Enter Hindi word">
+            <div class="hindi-word">e.कुत्ता</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">F. Water</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="f" placeholder="Enter Hindi word">
+            <div class="hindi-word">f.पानी</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">G. Tree</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="g" placeholder="Enter Hindi word">
+            <div class="hindi-word">g.वृक्ष</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">H. Flower</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="h" placeholder="Enter Hindi word">
+            <div class="hindi-word">h.फूल</div>
+        </div>
+    </div>
+    <button class="submit-btn">Submit</button>
+    <div class="result"></div>
+</div>
+
+<div class="exercise-container">
+    <h1>Exercise-III</h1>
+    <div class="exercise">
+        <p>Match the English words with their Hindi equivalents:</p>
+        <div class="word-pair">
+            <div class="english-word">I. Sun</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="i" placeholder="Enter Hindi word">
+            <div class="hindi-word">i.सूर्य</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">J. Moon</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="j" placeholder="Enter Hindi word">
+            <div class="hindi-word">j.चाँद</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">K. Star</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="k" placeholder="Enter Hindi word">
+            <div class="hindi-word">k.तारा</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">L. Sky</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="l" placeholder="Enter Hindi word">
+            <div class="hindi-word">l.आकाश</div>
+        </div>
+    </div>
+    <button class="submit-btn">Submit</button>
+    <div class="result"></div>
+</div>
+
+<div class="exercise-container">
+    <h1>Exercise-IV</h1>
+    <div class="exercise">
+        <p>Match the English words with their Hindi equivalents:</p>
+        <div class="word-pair">
+            <div class="english-word">Apple</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="a" placeholder="Enter Hindi word">
+            <div class="hindi-word">a.सेब</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">House</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="b" placeholder="Enter Hindi word">
+            <div class="hindi-word">b.घर</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">Car</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="c" placeholder="Enter Hindi word">
+            <div class="hindi-word">c.कार</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">Chair</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="d" placeholder="Enter Hindi word">
+            <div class="hindi-word">d.कुर्सी</div>
+        </div>
+    </div>
+    <button class="submit-btn">Submit</button>
+    <div class="result"></div>
+</div>
+
+<div class="exercise-container">
+    <h1>Exercise-V</h1>
+    <div class="exercise">
+        <p>Match the English words with their Hindi equivalents:</p>
+        <div class="word-pair">
+            <div class="english-word">Mother</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="e" placeholder="Enter Hindi word">
+            <div class="hindi-word">e.माँ</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">Father</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="f" placeholder="Enter Hindi word">
+            <div class="hindi-word">f.पिता</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">Brother</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="g" placeholder="Enter Hindi word">
+            <div class="hindi-word">g.भाई</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">Sister</div>
+            <input type="text" class="hindi-word-input" data-correct-answer="h" placeholder="Enter Hindi word">
+            <div class="hindi-word">h.बहन</div>
+        </div>
+    </div>
+    <button class="submit-btn">Submit</button>
+    <div class="result"></div>
+</div>
+
+<script>
+    var submitButtons = document.querySelectorAll('.submit-btn');
+
+    submitButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var wordPairs = button.parentNode.querySelectorAll('.word-pair');
+            var correctCount = 0;
+
+            wordPairs.forEach(function(pair) {
+                var input = pair.querySelector('.hindi-word-input');
+                var userAnswer = input.value.trim().toLowerCase();
+                var correctAnswer = input.getAttribute('data-correct-answer');
+
+                if (userAnswer === correctAnswer) {
+                    correctCount++;
+                }
+            });
+
+            var resultContainer = button.parentNode.querySelector('.result');
+            resultContainer.textContent = 'You got ' + correctCount + ' out of ' + wordPairs.length + ' correct.';
+        });
+    });
+</script>
+
+</body>
+</html>

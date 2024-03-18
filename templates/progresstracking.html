@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Tracking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .progress-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .progress-item {
+            margin-bottom: 10px;
+        }
+        .progress-label {
+            font-weight: bold;
+        }
+        .back-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Progress Tracking</h1>
+        <ul class="progress-list">
+            {% for category, progress in progress_data.items() %}
+                <li class="progress-item">
+                    <span class="progress-label">{{ category }}:</span> {{ progress }}%
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <button class="back-button" ><a href="/success" style="text-decoration: none; color: inherit;">Back</a></button>
+    </div>
+</body>
+</html>

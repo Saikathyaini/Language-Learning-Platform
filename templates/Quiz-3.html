@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tamil Quiz</title>
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        background: aliceblue;
+    }
+    .quiz-container{
+        width: 80%;
+        margin: 0 auto;
+    }
+    h1{
+        text-align: center;
+
+    }
+    .question{
+         width: 45%;
+         margin-bottom: 20px;
+         background: #fff;
+         padding: 20px;
+
+    }
+    .question:nth-child(odd){
+    margin-right: 5%;
+
+    }
+    .question p{
+        font-weight: bold;
+    }
+    .answers{
+        margin-bottom: 20px;
+    }
+    .answers label:not(:first-child){
+        border-top: 1px solid #e8e8e8;
+    }
+    label{
+        padding: 10px 0;
+        display:block;
+        margin-bottom: 10px;
+    }
+    input[type=radio]{
+        margin-right: 10px;
+    }
+    .submit-btn{
+        display: block;
+        margin-bottom: 20px auto;
+        padding: 10px 20px;
+        color: #fff;
+        background: #4caf50;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+    .result{
+        font-weight: bold;
+        font-size: 22px;
+        margin-top: 10px;
+        background: #f2f2f2;
+        border-radius: 5px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Exercise-1</h1>
+        <hr>
+        <form id="quiz-form">
+            <div class="d-flex">
+                <div class="question">
+                    <p>1.Choose the correct Tamil translation for the English phrase "Good morning":</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q1" value="a">
+                            காலை வணக்கம் (kālai vaṇakkam)
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="b">
+                            நல்வணக்கம் (nalvaṇakkam)
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="c">
+                            காலை வணக்கம் (kālai vazhthukkal)
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="d">
+                            குடியரசு (kuṭiyarasu)
+                        </label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>2.What is the Tamil translation of "Thank you"?</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q2" value="a">
+                            நன்றி (naṉṟi)
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="b">
+                            நான் (nāṉ)
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="c">
+                            வணக்கம் (vaṇakkam)
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="d">
+                            வந்து (vandu)
+                        </label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>3.How do you say "I love you" in Tamil?</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q3" value="a">
+                            நான் உன்னை காதலிக்கிறேன் (nāṉ uṉṉai kādalikkiṟēṉ)
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="b">
+                            உன்னை பார்க்கிறேன் (uṉṉai pārkiṟēṉ)
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="c">
+                            எனக்கு உன்னை பிடித்தால் (eṉakku uṉṉai piṭittāl)
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="d">
+                            எனக்கு உன்னை பார்த்தால் (eṉakku uṉṉai pārttāl)
+                        </label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>4.What is the Tamil translation of "Hello"?</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q4" value="a">
+                            வணக்கம் (vaṇakkam)
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="b">
+                            அன்பு (anpu)
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="c">
+                            பார்வை (pārvai)
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="d">
+                            நன்றி (naṉṟi)
+                        </label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>5.How do you say "How are you?" in Tamil?</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q5" value="a">
+                            நீங்கள் எப்படி இருக்கிறீர்கள்? (nīṅkaḷ eppaṭi irukkiṟīrkaḷ?)
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value="b">
+                            எப்படி இருக்கிறீர்கள்? (eppaṭi irukkiṟīrkaḷ?)
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value="c">
+                            எங்கும் இல்லை (eṅkum illai)
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value="d">
+                            பார்த்தியம் (pārttiyam)
+                        </label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>6.Translate the English word "Water" into Tamil:</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q6" value="a">
+                            மழை (mazhai)
+                        </label>
+                        <label>
+                            <input type="radio" name="q6" value="b">
+                            கனி (kaṉi)
+                        </label>
+                        <label>
+                            <input type="radio" name="q6" value="c">
+                            நீர் (nīr)
+                        </label>
+                        <label>
+                            <input type="radio" name="q6" value="d">
+                            தண்ணீர் (taṇṇīr)
+                        </label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>7.Translate the English phrase "I am hungry" into Tamil:</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q7" value="a">
+                            நான் பக்கியவானேன் (nāṉ pakkuyavāṉēṉ)
+                        </label>
+                        <label>
+                            <input type="radio" name="q7" value="b">
+                            நான் பசியாகுகிறேன் (nāṉ pasiyākukiṟēṉ)
+                        </label>
+                        <label>
+                            <input type="radio" name="q7" value="c">
+                            நான் புதுசுடாகுகிறேன் (nāṉ putusūṭākiṟēṉ)
+                        </label>
+                        <label>
+                            <input type="radio" name="q7" value="d">
+                            நான் அன்புக்கு இருக்கிறேன் (nāṉ anpukku irukkiṟēṉ)
+                        </label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>8.Translate the English word "Friend" into Tamil:</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q8" value="a">
+                            காதலன் (kādalann)
+                        </label>
+                        <label>
+                            <input type="radio" name="q8" value="b">
+                            தோழன் (tōḻaṉ)
+                        </label>
+                        <label>
+                            <input type="radio" name="q8" value="c">
+                            உண்மையானவன் (uṇmaiyāṉavaṉ)
+                        </label>
+                        <label>
+                            <input type="radio" name="q8" value="d">
+                            மிகவும் சிற்பமானவன் (mikavum ciṟpamāṉavaṉ)
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button type="submit"class="submit-btn">Submit</button>
+        </form>
+        <div class="result" id="result"></div>
+    </div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+        const quizform=document.getElementById("quiz-form");
+        const resultdiv=document.getElementById("result");
+        const correctanswers=['a','a','a','a','b','c','b','b'];
+        let score=0;
+            quizform.addEventListener('submit', function(e) {
+            e.preventDefault();
+    
+            let score = 0;
+            const userAnswers = [
+                quizform.q1.value,
+                quizform.q2.value,
+                quizform.q3.value,
+                quizform.q4.value,
+                quizform.q5.value,
+                quizform.q6.value,
+                quizform.q7.value,
+                quizform.q8.value,
+            ];
+    
+            userAnswers.forEach((answer, index) => {
+                if (answer === correctanswers[index]) {
+                    score += 1;
+                }
+            });
+    
+            // Send the score to the server asynchronously using fetch
+            fetch('/complete_quiz', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ score: score })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Handle success
+                    resultdiv.textContent = "Your score is " + score + ". Score saved successfully!";
+                } else {
+                    // Handle error
+                    resultdiv.textContent = "Error saving score.";
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                resultdiv.textContent = "Error saving score.";
+            });
+        });
+    });
+    </script>
+</body> 
+</html>

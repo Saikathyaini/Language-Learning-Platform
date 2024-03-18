@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tamil Quiz</title>
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        background: aliceblue;
+    }
+    .quiz-container{
+        width: 80%;
+        margin: 0 auto;
+    }
+    h1{
+        text-align: center;
+
+    }
+    .question{
+         width: 45%;
+         margin-bottom: 20px;
+         background: #fff;
+         padding: 20px;
+
+    }
+    .question:nth-child(odd){
+    margin-right: 5%;
+
+    }
+    .question p{
+        font-weight: bold;
+    }
+    .answers{
+        margin-bottom: 20px;
+    }
+    .answers label:not(:first-child){
+        border-top: 1px solid #e8e8e8;
+    }
+    label{
+        padding: 10px 0;
+        display:block;
+        margin-bottom: 10px;
+    }
+    input[type=radio]{
+        margin-right: 10px;
+    }
+    .submit-btn{
+        display: block;
+        margin-bottom: 20px auto;
+        padding: 10px 20px;
+        color: #fff;
+        background: #4caf50;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+    .result{
+        font-weight: bold;
+        font-size: 22px;
+        margin-top: 10px;
+        background: #f2f2f2;
+        border-radius: 5px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Exercise-1</h1>
+        <hr>
+        <form id="quiz-form">
+            <div class="d-flex">
+                <div class="question">
+                    <p>1.WWhat is the English translation of "ಹೊಸ ಗಣಿತ ಪುಸ್ತಕ"?</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q1" value="a">
+                            New Mathematics Book
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="b">
+                            Fresh Math Textbook
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="c">
+                            Recent Arithmetic Manual
+                        </label>
+                        <label>
+                            <input type="radio" name="q1" value="d">
+                            Modern Calculus Guide
+                        </label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>2.Translate "ನನ್ನ ಸ್ನೇಹಿತನು ಹೊಸ ಮನೆಗೆ ಬಂದನು" into English.</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q2" value="a">
+                            My friend came to the new house.
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="b">
+                            My friend went to the new house.
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="c">
+                            My friend lives in the new house.
+                        </label>
+                        <label>
+                            <input type="radio" name="q2" value="d">
+                            My friend visited the new house.
+                        </label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>3.What does "ನಾನು ನನ್ನ ಕೆಲಸವನ್ನು ಮುಗಿಸಿದ್ದೇನೆ" mean in English?</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q3" value="a">
+                            I will finish my work.
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="b">
+                            I am finishing my work.
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="c">
+                            I finished my work.
+                        </label>
+                        <label>
+                            <input type="radio" name="q3" value="d">
+                            I have finished my work.
+                        </label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>4.Translate "ಅವನು ತನ್ನ ಪುಸ್ತಕವನ್ನು ಮರಿಗೆ ಕೊಟ್ಟ" into English.</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q4" value="a">
+                            He took his book to the market.
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="b">
+                            He gave his book to his friend.
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="c">
+                            He lost his book.
+                        </label>
+                        <label>
+                            <input type="radio" name="q4" value="d">
+                            He bought a new book.
+                        </label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>5. What is the English translation of "ನಾವು ಹೊಸ ಕಾರು ಖರೀದಿಸಿದ್ದೇವೆ"?</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q5" value="a">
+                            We bought a new car.
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value="b">
+                            We are buying a new car.
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value="c">
+                            We will buy a new car.
+                        </label>
+                        <label>
+                            <input type="radio" name="q5" value="d">
+                            We have bought a new car.
+                        </label>
+                    </div>
+                </div>
+                <!--<div class="question">
+                    <p>6.Choose the correct translation for "ಗಿಡ" (giḍa) in English:</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q6" value="a">
+                            Flower
+                        </label>
+                        <label>
+                            <input type="radio" name="q6" value="b">
+                            Plant
+                        </label>
+                        <label>
+                            <input type="radio" name="q6" value="c">
+                            Stone
+                        </label>
+                        <label>
+                            <input type="radio" name="q6" value="d">
+                            Mountain
+                        </label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>7.What does "ನೆಲ" (nela) mean in English?</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q7" value="a">
+                            Sky
+                        </label>
+                        <label>
+                            <input type="radio" name="q7" value="b">
+                            Earth
+                        </label>
+                        <label>
+                            <input type="radio" name="q7" value="c">
+                            Cloud
+                        </label>
+                        <label>
+                            <input type="radio" name="q7" value="d">
+                            Wind
+                        </label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>8.Select the accurate translation for "ಮಾತೆ" (māṭe) in English:
+                    </p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="q8" value="a">
+                            Daughter
+                        </label>
+                        <label>
+                            <input type="radio" name="q8" value="b">
+                            Son
+                        </label>
+                        <label>
+                            <input type="radio" name="q8" value="c">
+                            Aunt
+                        </label>
+                        <label>
+                            <input type="radio" name="q8" value="d">
+                            Uncle
+                        </label>
+                    </div>
+                </div>-->
+            </div>
+            <button type="submit"class="submit-btn">Submit</button>
+        </form>
+        <div class="result" id="result"></div>
+    </div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+        const quizform=document.getElementById("quiz-form");
+        const resultdiv=document.getElementById("result");
+        const correctanswers=['a','a','d','b','d'];
+
+            quizform.addEventListener('submit', function(e) {
+            e.preventDefault();
+    
+            let score = 0;
+            const userAnswers = [
+                quizform.q1.value,
+                quizform.q2.value,
+                quizform.q3.value,
+                quizform.q4.value,
+                quizform.q5.value,
+                quizform.q6.value,
+                quizform.q7.value,
+                quizform.q8.value,
+            ];
+    
+            userAnswers.forEach((answer, index) => {
+                if (answer === correctanswers[index]) {
+                    score += 1;
+                }
+            });
+    
+            // Send the score to the server asynchronously using fetch
+            fetch('/complete_quiz', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ score: score })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Handle success
+                    resultdiv.textContent = "Your score is " + score + ". Score saved successfully!";
+                } else {
+                    // Handle error
+                    resultdiv.textContent = "Error saving score.";
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                resultdiv.textContent = "Error saving score.";
+            });
+        });
+    });
+    </script>
+</body>

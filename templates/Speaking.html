@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaking Practice</title>
+    <!-- Add your CSS styles here -->
+    <style>
+        /* Your CSS styles for this page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007acc;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.4;
+        }
+        /* Chatbot container styles */
+        #chatbot-container {
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        #chat-container {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+        }
+        #user-input {
+            margin-top: 20px;
+            clear: both;
+        }
+        #user-message {
+            width: 60%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        #target-language {
+            width: 20%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+        #send-button {
+            padding: 10px 15px;
+            background-color: #007acc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+        .back-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Speaking</h1>
+</header>
+<main>
+    <p>Improve your pronunciation by having real-time conversations with our chatbot.</p>
+
+    <!-- Chatbot container -->
+    <div id="chatbot-container">
+        <div id="chat-container">
+            <!-- Chatbot messages will appear here -->
+        </div>
+        <div id="user-input">
+            <input type="text" id="user-message" name="user-message" placeholder="Type your message...">
+            <input type="text" id="target-language" name="target-language" placeholder="Target language">
+            <button id="send-button">Send</button>
+            <input type="hidden" id="user-id" name="user-id" value="{{session.get('user_id') }}">
+        </div>
+    </div>
+
+    <!-- Audio player for synthesized speech -->
+    <audio id="synthesized-speech" controls style="display: none;"></audio>
+</main>
+<button id="formData" class="back-button"><a href="/success" style="text-decoration: none; color: inherit;">Back</a></button>
+
+<!-- Add your JavaScript code here -->
+<script>
+    // Function to send user message to backend for processing and play the synthesized speech audio
+function sendUserMessage() {
+        var userInput = document.getElementById("user-message").value;
+        var chatContainer = document.getElementById("chat-container");
+        var userId = document.getElementById("user-id").value;
+        var targetLanguage = document.getElementById("target-language").value;
+
+        // Display user message in chat container
+        var userMessageDiv = document.createElement("div");
+        userMessageDiv.innerText = "You: " + userInput;
+        chatContainer.appendChild(userMessageDiv);
+        
+        // Send user message to backend for processing
+        var formData = new FormData();
+        formData.append('user_message', userInput);
+        formData.append('language', 'en');
+        formData.append('user_id', userId);
+        // Send user message audio
+        fetch('/speak', {
+            method: 'POST',
+            body: formData
+        }).then(function(response) {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.blob();
+        }).then(function(blob) {
+            var audioUrl = URL.createObjectURL(blob);
+            var audioElement = document.getElementById("synthesized-speech");
+            audioElement.src = audioUrl;
+            audioElement.play();
+        }).catch(function(error) {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+
+        // Translate user message if target language is provided
+        fetch(`/translate?sentence=${encodeURIComponent(userInput)}&target_language=${targetLanguage}`)
+        .then(response =>{
+            if (!response.ok) {
+                throw new Error('Translation failed');
+        } 
+       return response.json();
+    })
+    .then(data => {
+            if (data.translated_text) {
+                // Display translated text
+                var translatedMessageDiv = document.createElement("div");
+                translatedMessageDiv.innerText = "Translated: " + data.translated_text;
+                chatContainer.appendChild(translatedMessageDiv);
+
+                // Send request to synthesize endpoint
+                fetch(`/synthesize?translated_text=${encodeURIComponent(data.translated_text)}&target_language=${targetLanguage}`)
+    .then(response => response.blob())
+    .then(blob => {
+        // Play the synthesized speech
+        var audioUrl = URL.createObjectURL(blob);
+        var audioElement = new Audio(audioUrl);
+        audioElement.play();
+    })
+    .catch(error => {
+        console.error('Error synthesizing speech:', error);
+    });
+
+            } else {
+                console.log("Translation failed.");
+            }
+        })
+        .catch(error => {
+            console.error('Error translating text:', error);
+        });
+}
+
+    // Event listener for send button click
+    document.getElementById("send-button").addEventListener("click", function() {
+        sendUserMessage();
+    });
+
+    // Event listener for Enter key press in input field
+    document.getElementById("user-message").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            sendUserMessage();
+        }
+    });
+    </script>
+</body>
+</html>

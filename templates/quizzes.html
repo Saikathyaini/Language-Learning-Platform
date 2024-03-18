@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quizzes</title>
+<style>
+    *{
+        text-decoration: none;
+    }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  section {
+    padding: 20px;
+    background-color: #f0f0f0;
+    margin-bottom: 20px;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .box {
+    width: calc(25% - 20px); /* 25% width for each box with margin */
+    height: 50px;
+    background-color: #83e5c6;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    box-sizing: border-box;
+  }
+  .full-width-box {
+    width: calc(100% - 40px); /* Full width of container with margin */
+  }
+  .back-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <button class="back-button" ><a href="/comprehension" style="text-decoration: none; color: inherit;">Back</a></button>
+<section name="tamil_quizzes">
+  <h2>Tamil</h2>
+  <div class="container">
+    <div class="box full-width-box"><a href="/Quiz-1">Quiz-1</a></div>
+    <div class="box full-width-box"><a href="/Quiz-2">Quiz-2</a></div>
+    <div class="box full-width-box"><a href="/Quiz-3">Quiz-3</a></div>
+  </div>
+</section>
+
+<section  name="hindi_quizzes">
+  <h2>Hindi</h2>
+  <div class="container">
+    <div class="box full-width-box"><a href="/hindiqz-1">Quiz-1</a></div>
+    <div class="box full-width-box"><a href="/hindiqz-2">Quiz-2</a></div>
+    <div class="box full-width-box"><a href="/hindiqz-3">Quiz-3</a></div>
+  </div>
+</section>
+
+<section name="kannada_quizzes">
+  <h2>Kannada</h2>
+  <div class="container">
+    <div class="box full-width-box"><a href="/kannadaqz-1">Quiz-1</a></div>
+    <div class="box full-width-box"><a href="/kannadaqz-2">Quiz-2</a></div>
+    <div class="box full-width-box"><a href="/kannadaqz-3">Quiz-3</a></div>
+  </div>
+</section>
+</body>
+</html>

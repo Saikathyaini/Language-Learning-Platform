@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Language Learning Exercises</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+    }
+  
+    .exercise-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px; /* Added margin between exercise containers */
+    }
+  
+    h1 {
+        text-align: center;
+    }
+  
+    .exercise {
+        margin-bottom: 20px;
+    }
+  
+    .word-pair {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+  
+    .english-word {
+        font-weight: bold;
+    }
+  
+    .tamil-word-input {
+        flex: 1;
+    }
+  
+    .tamil-word {
+        flex: 1;
+        margin-left: 10px;
+    }
+  
+    .submit-btn {
+        display: block;
+        margin: 0 auto;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+  
+    .result {
+        text-align: center;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+    
+<div class="exercise-container">
+    <h1>Exercise-I</h1>
+    <div class="exercise">
+        <p>Match the English words with their Tamil equivalents:</p>
+        <div class="word-pair">
+            <div class="english-word">A. Book</div>
+            <input type="text" class="tamil-word-input" data-correct-answer="c" placeholder="Enter Tamil word">
+            <div class="tamil-word">a.புத்தகம்</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">B. Pen</div>
+            <input type="text" class="tamil-word-input" data-correct-answer="a" placeholder="Enter Tamil word">
+            <div class="tamil-word">b.உருக்கம்</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">C. Table</div>
+            <input type="text" class="tamil-word-input" data-correct-answer="b" placeholder="Enter Tamil word">
+            <div class="tamil-word">c.மேடை</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">D. Chair</div>
+            <input type="text" class="tamil-word-input" data-correct-answer="d" placeholder="Enter Tamil word">
+            <div class="tamil-word">d.நாற்சாலை</div>
+        </div>
+    </div>
+    <button class="submit-btn">Submit</button>
+    <div class="result"></div>
+</div>
+<div class="exercise-container">
+    <h1>Exercise-II</h1>
+    <div class="exercise">
+        <p>Match the English words with their Tamil equivalents:</p>
+        <div class="word-pair">
+            <div class="english-word">E. Dog</div>
+            <input type="text" class="tamil-word-input" data-correct-answer="e" placeholder="Enter Tamil word">
+            <div class="tamil-word">e.நாய்</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">F. Water</div>
+            <input type="text" class="tamil-word-input" data-correct-answer="f" placeholder="Enter Tamil word">
+            <div class="tamil-word">f.நீர்</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">G. Tree</div>
+            <input type="text" class="tamil-word-input" data-correct-answer="g" placeholder="Enter Tamil word">
+            <div class="tamil-word">g.மரம்</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">H. Flower</div>
+            <input type="text" class="tamil-word-input" data-correct-answer="h" placeholder="Enter Tamil word">
+            <div class="tamil-word">h.பூ</div>
+        </div>
+    </div>
+      <button class="submit-btn">Submit</button>
+    <div class="result"></div>
+</div>
+<div class="exercise-container">
+  
+    <h1>Exercise-III</h1>
+    <div class="exercise">
+        <p>Match the English words with their Tamil equivalents:</p>
+        <div class="word-pair">
+            <div class="english-word">I. Sun</div>
+            <input type="text" class="tamil-word-input" data-correct-answer="i" placeholder="Enter Tamil word">
+            <div class="tamil-word">i.சூரியன்</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">J. Moon</div>
+            <input type="text" class="tamil-word-input" data-correct-answer="j" placeholder="Enter Tamil word">
+            <div class="tamil-word">j.மான்</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">K. Star</div>
+            <input type="text" class="tamil-word-input" data-correct-answer="k" placeholder="Enter Tamil word">
+            <div class="tamil-word">k.நட்சத்திரம்</div>
+        </div>
+        <div class="word-pair">
+            <div class="english-word">L. Sky</div>
+            <input type="text" class="tamil-word-input" data-correct-answer="l" placeholder="Enter Tamil word">
+            <div class="tamil-word">l.வானம்</div>
+        </div>
+    </div>
+    <button class="submit-btn">Submit</button>
+    <div class="result"></div>
+</div>
+
+<form id="percentage-form" action="/submit_percentage" method="POST">
+    <input type="hidden" id="percentage-input" name="percentage">
+    </form>
+
+<!-- ... Previous HTML content ... -->
+
+<!-- Move the script just before the closing </body> tag -->
+<script>
+    var submitButtons = document.querySelectorAll('.submit-btn');
+    var totalExercises = 3; // Update to the total number of exercises
+    var correctAnswers = 0; // Total number of correct answers
+
+    submitButtons.forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default form submission behavior
+
+            var wordPairs = button.parentNode.querySelectorAll('.word-pair');
+            var exerciseCorrectCount = 0;
+
+            wordPairs.forEach(function(pair) {
+                var input = pair.querySelector('.tamil-word-input');
+                var userAnswer = input.value.trim().toLowerCase();
+                var correctAnswer = input.getAttribute('data-correct-answer');
+
+                if (userAnswer === correctAnswer) {
+                    exerciseCorrectCount++;
+                    // Add styling for correct answer (optional)
+                } else {
+                    // Add styling for incorrect answer (optional)
+                }
+            });
+
+            var resultContainer = button.parentNode.querySelector('.result');
+            var scoreText = 'You got ' + exerciseCorrectCount + ' out of ' + wordPairs.length + ' correct.';
+            resultContainer.textContent = scoreText;
+
+            // Print the score after the result
+            setTimeout(function() {
+                resultContainer.textContent = scoreText + ' Score: ' + (exerciseCorrectCount / wordPairs.length * 100) + '%';
+            }, 1000);
+
+            correctAnswers += exerciseCorrectCount;
+            var percentage = (correctAnswers / (totalExercises * 4)) * 100; // Each exercise has 4 questions
+            document.querySelector('#percentage-input').value = percentage.toFixed(2);
+
+            // Submit the form asynchronously
+            console.log('Submitting form...');
+            fetch('/submit_percentage', {
+                method: 'POST',
+                body: new FormData(document.getElementById('percentage-form'))
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to submit percentage');
+                }
+                return response.text();
+            }).then(data => {
+                console.log('Percentage submitted successfully');
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+</script>
+</body>
+</html>

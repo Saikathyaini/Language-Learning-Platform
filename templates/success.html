@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Learning Chatbot</title>
+    <style>
+        /* Reset some default styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+        *{
+            text-decoration: none;
+        }
+        /* Add background images and patterns */
+        body {
+            background-size: cover, auto;
+            background-repeat: no-repeat, repeat;
+            background-position: center, center;
+            font-family: Arial, sans-serif;
+            color: SaddleBrown;
+        }
+
+        /* Create a header with a title */
+        header {
+            text-align: center;
+            padding: 50px;
+            color: DarkSlateGray;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+        }
+
+        /* Create a container for the chatbot section */
+        .chatbot-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Style the chatbot introduction */
+        .chatbot-intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Create a section for features */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .feature {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Style the footer */
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+            background-color: rgb(163, 163, 214) ;
+        }
+
+        /* Add responsive design */
+        @media (max-width: 768px) {
+            .chatbot-container {
+                margin: 20px;
+            }
+
+            .feature {
+                flex: 1 1 calc(50% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Language Learning Chatbot</h1>
+        <!-- Display the username here -->
+            <p>Hello, <span id="user-name">{{ user_name }}</span>!</p>
+        <!-- Add a logout button that redirects to the home page -->
+        <a href="/">Logout</a>
+    </header>
+
+    <div class="chatbot-container">
+        <div class="chatbot-intro">
+            <p>Learn a new language with our interactive chatbot. Practice speaking, listening, and more!</p>
+            <p>Start your language journey now.</p>
+            
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <span class="feature-icon">🗣️</span>
+                <h2 style="color:rgba(255, 255, 255, 0.95) ;"><a href="/Speaking">Speaking</a></h2>
+                <p>Improve your pronunciation by having real-time conversations with our chatbot. Get instant feedback.</p>
+                
+            </div>
+            <div class="feature">
+                <span class="feature-icon">👂</span>
+                <h2 style="color:rgba(255, 255, 255, 0.95) ;"><a href="/comprehension">Listening Comprehension</a></h2>
+                <p>Enhance your listening skills with authentic audio materials. Our chatbot provides exercises and quizzes.</p>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">📚</span>
+                <h2><a href="/lesson" >Interactive Lessons</a></h2>
+                <p>Engage in interactive lessons tailored to your level and interests. Progress at your own pace.</p>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">🏆</span>
+                <h2><a href="/progresstracking">Progress Tracking</a></h2>
+                <p>Track your learning progress, set goals, and receive personalized recommendations for improvement.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Language Learning Chatbot</p>
+    </footer>
+</body>
+</html>

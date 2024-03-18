@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tamil Quiz</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .question {
+        margin-bottom: 20px;
+    }
+    .options {
+        margin-left: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div class="question">
+    <p>1. What does "உணவு" (uṇavu) mean in English?</p>
+    <div class="options">
+        <input type="radio" id="q1a" name="q1" value="a">
+        <label for="q1a">a. Food</label><br>
+        <input type="radio" id="q1b" name="q1" value="b">
+        <label for="q1b">b. Water</label><br>
+        <input type="radio" id="q1c" name="q1" value="c">
+        <label for="q1c">c. Book</label><br>
+        <input type="radio" id="q1d" name="q1" value="d">
+        <label for="q1d">d. House</label>
+    </div>
+</div>
+
+<div class="question">
+    <p>2. Which word means "படிக்கும்" (paṭikkum) in English?</p>
+    <div class="options">
+        <input type="radio" id="q2a" name="q2" value="a">
+        <label for="q2a">a. Eat</label><br>
+        <input type="radio" id="q2b" name="q2" value="b">
+        <label for="q2b">b. Drink</label><br>
+        <input type="radio" id="q2c" name="q2" value="c">
+        <label for="q2c">c. Read</label><br>
+        <input type="radio" id="q2d" name="q2" value="d">
+        <label for="q2d">d. Sleep</label>
+    </div>
+</div>
+
+<!-- Add more questions here -->
+<!-- Question 3 -->
+<div class="question">
+    <p>3. What is the English translation of "மகிழ்ச்சி" (makiḻcci)?</p>
+    <div class="options">
+        <input type="radio" id="q3a" name="q3" value="a">
+        <label for="q3a">a. Sadness</label><br>
+        <input type="radio" id="q3b" name="q3" value="b">
+        <label for="q3b">b. Happiness</label><br>
+        <input type="radio" id="q3c" name="q3" value="c">
+        <label for="q3c">c. Anger</label><br>
+        <input type="radio" id="q3d" name="q3" value="d">
+        <label for="q3d">d. Fear</label>
+    </div>
+</div>
+
+<!-- Question 4 -->
+<div class="question">
+    <p>4. What does "நான் படித்தேன்" (nāṉ paṭittēṉ) mean in English?</p>
+    <div class="options">
+        <input type="radio" id="q4a" name="q4" value="a">
+        <label for="q4a">a. I am reading</label><br>
+        <input type="radio" id="q4b" name="q4" value="b">
+        <label for="q4b">b. I will read</label><br>
+        <input type="radio" id="q4c" name="q4" value="c">
+        <label for="q4c">c. I have read</label><br>
+        <input type="radio" id="q4d" name="q4" value="d">
+        <label for="q4d">d. I read</label>
+    </div>
+</div>
+
+<!-- Question 5 -->
+<div class="question">
+    <p>5. Which option correctly completes the sentence: "அவன் அதிகமாக ___" (avan adhikamāka ___)?</p>
+    <div class="options">
+        <input type="radio" id="q5a" name="q5" value="a">
+        <label for="q5a">a. வாழிக்கிறான் (vāḻikkiṟāṉ)</label><br>
+        <input type="radio" id="q5b" name="q5" value="b">
+        <label for="q5b">b. படிக்கிறான் (paṭikkiṟāṉ)</label><br>
+        <input type="radio" id="q5c" name="q5" value="c">
+        <label for="q5c">c. செய்கிறான் (ceikkiṟāṉ)</label><br>
+        <input type="radio" id="q5d" name="q5" value="d">
+        <label for="q5d">d. பார்க்கிறான் (pārkkiṟāṉ)</label>
+    </div>
+</div>
+
+<button onclick="submitQuiz()">Submit</button>
+
+<script>
+function submitQuiz() {
+    // Gather user's responses
+    var answers = [];
+    var questions = document.getElementsByClassName('question');
+    for (var i = 0; i < questions.length; i++) {
+        var radios = questions[i].querySelectorAll('input[type=radio]:checked');
+        if (radios.length === 1) {
+            answers.push(radios[0].value);
+        } else {
+            answers.push(null); // No option selected
+        }
+    }
+    
+
+    // Display user's responses (for demonstration purposes)
+    console.log("User's responses: " + answers.join(', '));
+    alert("Quiz submitted. Check the browser console for responses.");
+}
+</script>
+
+</body>
+</html>
