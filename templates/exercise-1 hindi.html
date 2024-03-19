@@ -211,27 +211,67 @@
     <button class="submit-btn">Submit</button>
     <div class="result"></div>
 </div>
+<form id="percentage-form" action="/submit_percentage" method="POST">
+    <input type="hidden" id="percentage-input" name="percentage">
+    </form>
 
+<!-- ... Previous HTML content ... -->
+
+<!-- Move the script just before the closing </body> tag -->
 <script>
     var submitButtons = document.querySelectorAll('.submit-btn');
+    var totalExercises = 3; // Update to the total number of exercises
+    var correctAnswers = 0; // Total number of correct answers
 
     submitButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default form submission behavior
+
             var wordPairs = button.parentNode.querySelectorAll('.word-pair');
-            var correctCount = 0;
+            var exerciseCorrectCount = 0;
 
             wordPairs.forEach(function(pair) {
-                var input = pair.querySelector('.hindi-word-input');
+                var input = pair.querySelector('.tamil-word-input');
                 var userAnswer = input.value.trim().toLowerCase();
                 var correctAnswer = input.getAttribute('data-correct-answer');
 
                 if (userAnswer === correctAnswer) {
-                    correctCount++;
+                    exerciseCorrectCount++;
+                    // Add styling for correct answer (optional)
+                } else {
+                    // Add styling for incorrect answer (optional)
                 }
             });
 
             var resultContainer = button.parentNode.querySelector('.result');
-            resultContainer.textContent = 'You got ' + correctCount + ' out of ' + wordPairs.length + ' correct.';
+            var scoreText = 'You got ' + exerciseCorrectCount + ' out of ' + wordPairs.length + ' correct.';
+            resultContainer.textContent = scoreText;
+
+            // Print the score after the result
+            setTimeout(function() {
+                resultContainer.textContent = scoreText + ' Score: ' + (exerciseCorrectCount / wordPairs.length * 100) + '%';
+            }, 1000);
+
+            correctAnswers += exerciseCorrectCount;
+            var percentage = (correctAnswers / (totalExercises * 4)) * 100; // Each exercise has 4 questions
+            document.querySelector('#percentage-input').value = percentage.toFixed(2);
+
+            // Submit the form asynchronously
+            console.log(percentage);
+            fetch('/submit_percentage', {
+                method: 'POST',
+                body: new FormData(document.getElementById('percentage-form'))
+                //console.log(percentage);
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to submit percentage');
+                }
+                return response.text();
+            }).then(data => {
+                console.log('Percentage submitted successfully');
+            }).catch(error => {
+                console.error('Error:', error);
+            });
         });
     });
 </script>

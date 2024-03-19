@@ -200,10 +200,11 @@
             document.querySelector('#percentage-input').value = percentage.toFixed(2);
 
             // Submit the form asynchronously
-            console.log('Submitting form...');
+            console.log(percentage);
             fetch('/submit_percentage', {
                 method: 'POST',
                 body: new FormData(document.getElementById('percentage-form'))
+                //console.log(percentage);
             }).then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to submit percentage');

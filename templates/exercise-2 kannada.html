@@ -58,6 +58,10 @@
     text-align: center;
     font-weight: bold;
   }
+  #percentage-info {
+    text-align: center;
+    margin-top: 20px;
+  }
 </style>
 </head>
 <body>
@@ -67,60 +71,91 @@
     <label for="kannada-sentence">Write a Kannada sentence for the following prompts:</label>
     <br>
     <p>1. I am happy.</p>
-    <textarea id="kannada-sentence-1" name="kannada-sentence" rows="4" required></textarea>
+    <textarea id="kannada-sentence-1" name="kannada-sentence" rows="1" required></textarea>
     <br>
     <p>2. She eats apples.</p>
-    <textarea id="kannada-sentence-2" name="kannada-sentence" rows="4" required></textarea>
+    <textarea id="kannada-sentence-2" name="kannada-sentence" rows="1" required></textarea>
     <br>
     <p>3. He runs fast.</p>
-    <textarea id="kannada-sentence-3" name="kannada-sentence" rows="4" required></textarea>
+    <textarea id="kannada-sentence-3" name="kannada-sentence" rows="1" required></textarea>
     <br>
     <p>4. They play games.</p>
-    <textarea id="kannada-sentence-4" name="kannada-sentence" rows="4" required></textarea>
+    <textarea id="kannada-sentence-4" name="kannada-sentence" rows="1" required></textarea>
     <br>
     <p>5. We drink water.</p>
-    <textarea id="kannada-sentence-5" name="kannada-sentence" rows="4" required></textarea>
+    <textarea id="kannada-sentence-5" name="kannada-sentence" rows="1" required></textarea>
     <br>
+  </form>
+  <form id="percentage-form" action="/submit_percentage" method="POST">
+    <input type="hidden" id="percentage-input" name="percentage">
     <button type="submit">Submit</button>
   </form>
   <div id="feedback"></div>
+  <div id="percentage-info"></div>
 </div>
+
+<!-- ... Previous HTML content ... -->
+
+<!-- Move the script just before the closing </body> tag -->
 <script>
-  document.getElementById('writing-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting
+  var submitButton = document.querySelector('#percentage-form button[type="submit"]');
+  var totalExercises = 5; // Total number of exercises
+  var correctAnswers = 0; // Total number of correct answers
 
-    // Get the user-entered Kannada sentences
-    var kannadaSentences = [];
-    for (var i = 1; i <= 5; i++) {
-      kannadaSentences.push(document.getElementById('kannada-sentence-' + i).value.trim());
-    }
+  submitButton.addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
 
-    // Call a function to verify the sentences
-    var isAllCorrect = verifyKannadaSentences(kannadaSentences);
-
-    // Display feedback based on verification result
-    var feedback = document.getElementById('feedback');
-    if (isAllCorrect) {
-      feedback.textContent = 'ಎಲ್ಲಾ ವಾಕ್ಯಗಳೂ ಸರಿಯಾಗಿವೆ! ಚೆನ್ನಾಗಿದೆ!';
-      feedback.style.color = 'green';
-    } else {
-      feedback.textContent = 'ಕೆಲವು ವಾಕ್ಯಗಳು ತಪ್ಪಾಗಿವೆ. ಸರಿಯಾದ ವಾಕ್ಯಗಳು ಕೆಳಗಿನಂತೆ ಇವೆ.';
-      feedback.style.color = 'red';
-      var correctSentences = getCorrectSentences();
-      for (var j = 0; j < correctSentences.length; j++) {
-        feedback.innerHTML += '<p>' + (j + 1) + '. ' + correctSentences[j] + '</p>';
+    // Check if all textareas are filled
+    var textareas = document.querySelectorAll('#writing-form textarea');
+    var allFilled = true;
+    textareas.forEach(function(textarea) {
+      if (textarea.value.trim() === '') {
+        allFilled = false;
       }
+    });
+
+    if (!allFilled) {
+      alert('Please fill in all the sentences before submitting.');
+      return;
     }
+
+    // Proceed with calculating percentage and submitting the form
+    var correctSentences = getCorrectSentences();
+    var userAnswers = [];
+    textareas.forEach(function(textarea) {
+      userAnswers.push(textarea.value.trim().toLowerCase());
+    });
+
+    userAnswers.forEach(function(answer, index) {
+      if (answer === correctSentences[index]) {
+        correctAnswers++;
+      }
+    });
+
+    var percentage = (correctAnswers / (totalExercises * 1)) * 100; // Each exercise has 1 question
+    document.querySelector('#percentage-input').value = percentage.toFixed(2);
+
+    // Display score and percentage information
+    var percentageInfo = document.getElementById('percentage-info');
+    percentageInfo.textContent = 'Score: ' + correctAnswers + ' / ' + (totalExercises * 1) + ' (' + percentage.toFixed(2) + '%)';
+    
+    // Submit the form asynchronously
+    fetch('/submit_percentage', {
+      method: 'POST',
+      body: new FormData(document.getElementById('percentage-form'))
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to submit percentage');
+      }
+      return response.text();
+    }).then(data => {
+      console.log('Percentage submitted successfully');
+      // Handle success, e.g., show feedback to the user
+    }).catch(error => {
+      console.error('Error:', error);
+      // Handle error, e.g., show error message to the user
+    });
   });
-
-  function verifyKannadaSentences(sentences) {
-    for (var i = 0; i < sentences.length; i++) {
-      if (sentences[i] === '') {
-        return false;
-      }
-    }
-    return true;
-  }
 
   function getCorrectSentences() {
     var correctSentences = [
@@ -130,7 +165,6 @@
       "ಅವರು ಆಟಗಳನ್ನು ಆಡುತ್ತಾರೆ.",
       "ನಾವು ನೀರನ್ನು ಕುಡಿಯುತ್ತೇವೆ."
     ];
-
     return correctSentences;
   }
 </script>

@@ -124,7 +124,7 @@
 // Update user score when the form is submitted
 document.getElementById('lessonForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
-    const userId = document.getElementById('user_id').value;
+    const userId = document.getElementById("user_id").value;
     console.log(userId);
     if (userId) {
         fetch('/complete_interactive_lesson', {

@@ -172,5 +172,43 @@
 
     </ul>
 </div>
+<form id="lessonForm" action="/complete_interactive_lesson" method="POST">
+    <input name="user_id" id="user_id" value="{{session.get('user_id')}}">
+    <button id="submitButton" type="submit">Complete Lesson</button>
+  </form>  
+<script>
+// Update user score when the form is submitted
+document.getElementById('lessonForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+    const userId = document.getElementById("user_id").value;
+    console.log(userId);
+    if (userId) {
+        fetch('/complete_interactive_lesson', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ user_id: userId }),
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('Score updated successfully');
+                // Handle success (e.g., show a success message)
+            } else {
+                console.error('Failed to update score:', response.status);
+                // Handle failure (e.g., show an error message)
+            }
+        })
+        .catch(error => {
+            console.error('Error updating score:', error);
+            // Handle error (e.g., show an error message)
+        });
+    } else {
+        console.error('User ID not found');
+        // Handle the case where user ID is not found (e.g., show an error message)
+    }
+});
+    </script>
+
 </body>
 </html>

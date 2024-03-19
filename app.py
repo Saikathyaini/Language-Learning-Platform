@@ -11,7 +11,6 @@ from googletrans import Translator
 import pyttsx3
 import tempfile
 from io import BytesIO
-from nltk.corpus import wordnet as wn
 app = Flask(__name__, static_folder='static')
 app.secret_key = os.urandom(24)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
@@ -130,7 +129,7 @@ def complete_quiz():
 # Route for completing an interactive lesson
 @app.route('/complete_interactive_lesson', methods=['POST'])
 def complete_interactive_lesson():
-    user_id = request.form.get('user_id')
+    user_id = request.json.get('user_id')
     print("Received user_id:", user_id)  
     print(user_id)
     if user_id:
