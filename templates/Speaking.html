@@ -104,7 +104,13 @@
         </div>
         <div id="user-input">
             <input type="text" id="user-message" name="user-message" placeholder="Type your message...">
-            <input type="text" id="target-language" name="target-language" placeholder="Target language">
+            <select id="target-language" name="target-language">
+                <option value="telugu">Telugu</option>
+                <option value="hindi">Hindi</option>
+                <option value="english">English</option>
+                <option value="kannada">Kannada</option>
+                <option value="tamil">Tamil</option>
+            </select>
             <button id="send-button">Send</button>
             <input type="hidden" id="user-id" name="user-id" value="{{session.get('user_id') }}">
         </div>
