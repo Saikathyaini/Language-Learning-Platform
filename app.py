@@ -266,73 +266,6 @@ def speaking():
     elif request.method == 'POST':
         pass
 
-@app.route('/comprehension')
-def comprehension():
-    return render_template('comprehension.html')
-
-@app.route('/lesson')
-def lesson():
-    return render_template('lesson.html')
-
-@app.route('/exercises')
-def exercises():
-    return render_template('exercises.html')
-
-@app.route('/audio materials')
-def audio_materials():
-    return render_template('audio materials.html')
-
-@app.route('/quizzes')
-def quizzes():
-    return render_template('quizzes.html')
-
-@app.route('/lesson1 tamil')
-def lesson1_tamil():
-    return render_template('lesson1 tamil.html')
-
-@app.route('/lesson2 tamil')
-def lesson2_tamil():
-    return render_template('lesson2 tamil.html')
-
-@app.route('/lesson1 hindi')
-def lesson1_hindi():
-    return render_template('lesson1 hindi.html')
-
-@app.route('/lesson2 hindi')
-def lesson2_hindi():
-    return render_template('lesson2 hindi.html')
-
-@app.route('/lesson1 kannada')
-def lesson1_kannada():
-    return render_template('lesson1 kannada.html')
-
-@app.route('/lesson2 kannada')
-def lesson2_kannada():
-    return render_template('lesson2 kannada.html')
-
-@app.route('/exercise-1 tamil')
-def exercise_1_tamil():
-    return render_template('exercise-1 tamil.html')
-
-@app.route('/exercise-2 tamil')
-def exercise_2_tamil():
-    return render_template('exercise-2 tamil.html')
-
-@app.route('/exercise-1 hindi')
-def exercise_1_hindi():
-    return render_template('exercise-1 hindi.html')
-
-@app.route('/exercise-2 hindi')
-def exercise_2_hindi():
-    return render_template('exercise-2 hindi.html')
-
-@app.route('/exercise-1 kannada')
-def exercise_1_kannada():
-    return render_template('exercise-1 kannada.html')
-
-@app.route('/exercise-2 kannada')
-def exercise_2_kannada():
-    return render_template('exercise-2 kannada.html')
 
 @app.route('/audio/<path:filename>')
 def serve_audio(filename):
@@ -341,42 +274,13 @@ def serve_audio(filename):
 @app.route('/jpg/<path:filename>')
 def serve_jpg(filename):
     return send_from_directory('static/jpg', filename)
-
-@app.route('/hindiqz-1')
-def hindi_quiz1():
-    return render_template('hindiqz-1.html')
-
-@app.route('/hindiqz-2')
-def hindi_quiz2():
-    return render_template('hindiqz-2.html')
-
-@app.route('/hindiqz-3')
-def hindi_quiz3():
-    return render_template('hindiqz-3.html')
-
-@app.route('/Quiz-1')
-def tamil_quiz1():
-    return render_template('Quiz-1.html')
-
-@app.route('/Quiz-2')
-def tamil_quiz2():
-    return render_template('Quiz-2.html')
-
-@app.route('/Quiz-3')
-def tamil_quiz3():
-    return render_template('Quiz-3.html')
-
-@app.route('/kannadaqz-1')
-def kannada_quiz1():
-    return render_template('kannadaqz-1.html')
-
-@app.route('/kannadaqz-2')
-def kannada_quiz2():
-    return render_template('kannadaqz-2.html')
-
-@app.route('/kannadaqz-3')
-def kannada_quiz3():
-    return render_template('kannadaqz-3.html')
+@app.route('/<page>')
+def dynamic_page(page):
+    """
+    Renders the specified page template based on the URL path.
+    For example, '/lesson1 tamil' will render 'lesson1 tamil.html'.
+    """
+    return render_template(f"{page}.html")
 
 @app.route('/login', methods=['POST'])
 def require_login(view):
