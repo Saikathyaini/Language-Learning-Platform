@@ -179,14 +179,12 @@ def synthesize_speech():
         if target_language not in SUPPORTED_LANGUAGES:
             return jsonify({'error': f'Language not supported: {target_language}'}), 400
 
-        tts = gTTS(text=translated_text, lang=target_language)
-        speech_bytes = BytesIO()
-        tts.write_to_fp(speech_bytes)
-        speech_bytes.seek(0)
+        tts = gTTS(text=translated_text, lang=target_language, slow=False)
+        _, temp_file_path = tempfile.mkstemp(suffix='.mp3')
+        tts.save(temp_file_path)
 
-        return Response(speech_bytes, mimetype='audio/mpeg')
-    else:
-        return jsonify({'error': 'Missing parameters'}), 400
+        return send_file(temp_file_path, as_attachment=True)
+    return jsonify({'error': 'Missing parameters'}), 400
 
 @app.route('/speak', methods=['POST'])
 def speak():
