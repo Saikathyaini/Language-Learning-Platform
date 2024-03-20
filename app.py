@@ -11,6 +11,7 @@ from googletrans import Translator
 import pyttsx3
 import tempfile
 from io import BytesIO
+from jinja2.exceptions import TemplateNotFound
 
 app = Flask(__name__, static_folder='static')
 app.secret_key = os.urandom(24)
@@ -26,7 +27,8 @@ SUPPORTED_LANGUAGES = {
     'ta': 'Tamil',
     'kn': 'Kannada',
     'te': 'Telugu',
-    'en': 'English'
+    'en': 'English',
+    'hi':'Hindi'
 }
 
 def recreate_tables():
@@ -171,20 +173,23 @@ def translate():
     else:
         return jsonify({'error': 'Missing parameters'})
 
-@app.route('/synthesize', methods=['GET'])
+@app.route('/synthesize', methods=['POST','GET'])
 def synthesize_speech():
-    translated_text = request.args.get('translated_text')
-    target_language = request.args.get('target_language')
+    translated_text = request.form.get('translated_text')
+    target_language = request.form.get('target_language')
 
     if translated_text and target_language:
         if target_language not in SUPPORTED_LANGUAGES:
             return jsonify({'error': f'Language not supported: {target_language}'}), 400
 
-        tts = gTTS(text=translated_text, lang=target_language, slow=False)
-        _, temp_file_path = tempfile.mkstemp(suffix='.mp3')
-        tts.save(temp_file_path)
+        try:
+            tts = gTTS(text=translated_text, lang=target_language, slow=False)
+            _, temp_file_path = tempfile.mkstemp(suffix='.mp3')
+            tts.save(temp_file_path)
 
-        return send_file(temp_file_path, as_attachment=True)
+            return send_file(temp_file_path, as_attachment=True)
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
     return jsonify({'error': 'Missing parameters'}), 400
 
 @app.route('/speak', methods=['POST'])
@@ -273,14 +278,12 @@ def serve_audio(filename):
 @app.route('/jpg/<path:filename>')
 def serve_jpg(filename):
     return send_from_directory('static/jpg', filename)
-@app.route('/<page>')
+@app.route('/dynamic_page/<page>')
 def dynamic_page(page):
-    """
-    Renders the specified page template based on the URL path.
-    For example, '/lesson1 tamil' will render 'lesson1 tamil.html'.
-    """
-    return render_template(f"{page}.html")
-
+    try:
+        return render_template(f"{page}.html")
+    except TemplateNotFound:
+        return render_template("error.html", message="Template not found")
 @app.route('/login', methods=['POST'])
 def require_login(view):
     @wraps(view)
@@ -289,6 +292,10 @@ def require_login(view):
             return redirect('/')
         return view(*args, **kwargs)
     return wrapped_view
+
+@app.route('/favicon.ico')
+def favicon():
+    return "",404
 
 if __name__ == '__main__':
     app.run(debug=True)

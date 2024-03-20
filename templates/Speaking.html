@@ -89,6 +89,8 @@
             cursor: pointer;
         }
     </style>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='jpg/favicon-32x32.png') }}">
+
 </head>
 <body>
 <header>
@@ -138,7 +140,9 @@ function sendUserMessage() {
         // Send user message to backend for processing
         var formData = new FormData();
         formData.append('user_message', userInput);
-        formData.append('language', 'en');
+        formData.append('translated_text', translatedText);
+        formData.append('target_language', targetLanguage);
+
         formData.append('user_id', userId);
         // Send user message audio
         fetch('/speak', {
@@ -175,12 +179,12 @@ function sendUserMessage() {
 
                 // Send request to synthesize endpoint
                 fetch(`/synthesize?translated_text=${encodeURIComponent(data.translated_text)}&target_language=${targetLanguage}`)
-    .then(response => response.blob())
-    .then(blob => {
+                .then(response => response.blob())
+                .then(blob => {
         // Play the synthesized speech
-        var audioUrl = URL.createObjectURL(blob);
-        var audioElement = new Audio(audioUrl);
-        audioElement.play();
+                var audioUrl = URL.createObjectURL(blob);
+                var audioElement = new Audio(audioUrl);
+                audioElement.play();
     })
     .catch(error => {
         console.error('Error synthesizing speech:', error);
