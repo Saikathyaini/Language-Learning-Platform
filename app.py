@@ -173,10 +173,13 @@ def translate():
     else:
         return jsonify({'error': 'Missing parameters'})
 
-@app.route('/synthesize', methods=['POST','GET'])
+
+@app.route('/synthesize', methods=['POST'])
 def synthesize_speech():
-    translated_text = request.form.get('translated_text')
-    target_language = request.form.get('target_language')
+    request_data = request.get_json()
+
+    translated_text = request_data.get('translated_text')
+    target_language = request_data.get('target_language')
 
     if translated_text and target_language:
         if target_language not in SUPPORTED_LANGUAGES:
@@ -191,6 +194,7 @@ def synthesize_speech():
         except Exception as e:
             return jsonify({'error': str(e)}), 500
     return jsonify({'error': 'Missing parameters'}), 400
+
 
 @app.route('/speak', methods=['POST'])
 def speak():
@@ -278,12 +282,14 @@ def serve_audio(filename):
 @app.route('/jpg/<path:filename>')
 def serve_jpg(filename):
     return send_from_directory('static/jpg', filename)
-@app.route('/dynamic_page/<page>')
+@app.route('/<page>')
 def dynamic_page(page):
-    try:
-        return render_template(f"{page}.html")
-    except TemplateNotFound:
-        return render_template("error.html", message="Template not found")
+    """
+    Renders the specified page template based on the URL path.
+    For example, '/lesson1 tamil' will render 'lesson1 tamil.html'.
+    """
+    return render_template(f"{page}.html")
+
 @app.route('/login', methods=['POST'])
 def require_login(view):
     @wraps(view)

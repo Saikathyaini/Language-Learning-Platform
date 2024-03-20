@@ -140,8 +140,8 @@ function sendUserMessage() {
         // Send user message to backend for processing
         var formData = new FormData();
         formData.append('user_message', userInput);
-        formData.append('translated_text', translatedText);
-        formData.append('target_language', targetLanguage);
+        //formData.append('translated_text', translatedText);
+       // formData.append('target_language', targetLanguage);
 
         formData.append('user_id', userId);
         // Send user message audio
@@ -162,43 +162,53 @@ function sendUserMessage() {
             console.error('There was a problem with the fetch operation:', error);
         });
 
-        // Translate user message if target language is provided
-        fetch(`/translate?sentence=${encodeURIComponent(userInput)}&target_language=${targetLanguage}`)
-        .then(response =>{
+        fetch('/translate?sentence=' + encodeURIComponent(userInput) + '&target_language=' + targetLanguage)
+        .then(response => {
             if (!response.ok) {
-                throw new Error('Translation failed');
-        } 
-       return response.json();
-    })
-    .then(data => {
+                throw new Error('Translation request failed');
+            }
+            return response.json();
+        })
+        .then(data => {
             if (data.translated_text) {
-                // Display translated text
                 var translatedMessageDiv = document.createElement("div");
                 translatedMessageDiv.innerText = "Translated: " + data.translated_text;
                 chatContainer.appendChild(translatedMessageDiv);
 
-                // Send request to synthesize endpoint
-                fetch(`/synthesize?translated_text=${encodeURIComponent(data.translated_text)}&target_language=${targetLanguage}`)
-                .then(response => response.blob())
+                // Send a POST request to synthesize speech
+                fetch('/synthesize', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        translated_text: data.translated_text,
+                        target_language: targetLanguage
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Speech synthesis request failed');
+                    }
+                    return response.blob();
+                })
                 .then(blob => {
-        // Play the synthesized speech
-                var audioUrl = URL.createObjectURL(blob);
-                var audioElement = new Audio(audioUrl);
-                audioElement.play();
-    })
-    .catch(error => {
-        console.error('Error synthesizing speech:', error);
-    });
-
+                    var audioUrl = URL.createObjectURL(blob);
+                    var audioElement = document.getElementById("synthesized-speech");
+                    audioElement.src = audioUrl;
+                    audioElement.play();
+                })
+                .catch(error => {
+                    console.error('Error synthesizing speech:', error);
+                });
             } else {
                 console.log("Translation failed.");
             }
         })
         .catch(error => {
-            console.error('Error translating text:', error);
+            console.error('Error:', error);
         });
 }
-
     // Event listener for send button click
     document.getElementById("send-button").addEventListener("click", function() {
         sendUserMessage();
