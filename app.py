@@ -17,6 +17,7 @@ app.secret_key = os.urandom(24)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 db.init_app(app)
 migrate = Migrate(app, db)
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 translator = Translator()
 engine = pyttsx3.init()
