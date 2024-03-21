@@ -199,7 +199,7 @@ def synthesize_speech():
 @app.route('/speak', methods=['POST'])
 def speak():
     user_message = request.form.get('user_message')
-    target_language = request.form.get('target_language', 'en')
+    target_language = request.form.get('target_language',)
 
     if not user_message:
         return jsonify({'error': 'User message not provided'}), 400
