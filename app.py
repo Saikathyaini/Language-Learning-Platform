@@ -199,7 +199,7 @@ def synthesize_speech():
 @app.route('/speak', methods=['POST'])
 def speak():
     user_message = request.form.get('user_message')
-    target_language = request.form.get('target_language',)
+    target_language = request.form.get('target_language','en')
 
     if not user_message:
         return jsonify({'error': 'User message not provided'}), 400
@@ -220,7 +220,6 @@ def speak():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
 @app.route('/progresstracking')
 def progress():
     user_name = session.get('user_name')
