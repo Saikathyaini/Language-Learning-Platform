@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Hindi Lessons</title>
+<title> Kannada Lessons</title>
 <style>
 .centered-section {
   display: flex;
@@ -32,13 +32,19 @@
   width: 50%;
 }
 
+.back-button {
+  margin-bottom: 20px; /* Add some margin to separate the button from the cards */
+}
+
 </style>
 </head>
-<section>
-    <h2>Kannada</h2>
+<body>
+  <section>
+    <button class="back-button" onclick="goBack()">Back</button>
+    <h2>Kannada Lessons</h2>
     <div class="container">
-      <div class="box full-width-box"><a href="/lesson1 kannada">Lesson-1</a></div>
-      <div class="box full-width-box"><a href="/lesson2 kannada">Lesson-2</a></div>
+      <div class="box full-width-box" onclick="window.location.href='/lesson1 kannada'">Lesson-1</div>
+      <div class="box full-width-box" onclick="window.location.href='/lesson2 kannada'">Lesson-2</div>
     </div>
   </section>
   <script>
@@ -46,6 +52,5 @@
       window.history.back();
     }
   </script>
-  
-  </body>
-  </html>
+</body>
+</html>

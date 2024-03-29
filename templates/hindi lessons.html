@@ -26,25 +26,32 @@
   align-items: center;
   justify-content: center;
   background-color: #dcb3b3;
+  cursor: pointer; /* Add cursor pointer to indicate it's clickable */
 }
 
 .full-width-box {
   width: 50%;
 }
 
+.back-button {
+  margin-bottom: 20px; /* Add some margin to separate the button from the cards */
+}
+
 </style>
 </head>
-<body><section>
+<body>
+  <section>
+    <button class="back-button" onclick="goBack()">Back</button>
     <h2>Hindi</h2>
     <div class="container">
-      <div class="box full-width-box"><a href="/lesson1 hindi">Lesson-1</a></div>
-      <div class="box full-width-box"><a href="/lesson2 hindi">Lesson-2</a></div>
+      <div class="box full-width-box" onclick="window.location='/lesson1 hindi';">Lesson-1</div>
+      <div class="box full-width-box" onclick="window.location='/lesson2 hindi';">Lesson-2</div>
     </div>
   </section>
   <script>
-  function goBack() {
-    window.history.back();
-  }
-</script>
-  </body>
-  </html>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>

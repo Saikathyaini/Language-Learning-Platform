@@ -26,6 +26,7 @@
   align-items: center;
   justify-content: center;
   background-color: #dcb3b3;
+  cursor: pointer; /* Add cursor pointer to indicate it's clickable */
 }
 
 .full-width-box {
@@ -37,11 +38,11 @@
 <body>
 
 <section>
-  <button class="back-button" ><a href="/success" style="text-decoration: none; color: inherit;">Back</a></button>>
+  <button class="back-button" ><a href="/connector2" style="text-decoration: none; color: inherit;">Back</a></button>
   <h2><center>  Tamil Lessons</center></h2>
   <div class="container">
-    <div class="box full-width-box"><a href="/lesson1 tamil">Lesson-1</a></div>
-    <div class="box full-width-box"><a href="/lesson2 tamil">Lesson-2</a></div>
+    <div class="box full-width-box" onclick="window.location='/lesson1 tamil';">Lesson-1</div>
+    <div class="box full-width-box" onclick="window.location='/lesson2 tamil';">Lesson-2</div>
   </div>
 </section>
 <script>
