@@ -54,10 +54,17 @@
     <h1>Tamil Letters</h1>
     <ul class="letters-list">
         <!-- Display Tamil letters with English translations -->
-        <li class="letter-item"><p>அ - A</p></li>
-        <li class="letter-item"><p>ஆ - AA</p></li>
-        <li class="letter-item"><p>இ - I</p></li>
-        <li class="letter-item"><p>ஈ - EE</p></li>
+        <li class="letter-item" onclick="speak('அ - A')"> 
+            <p class="letter-text">அ - A</p>
+        </li>
+        <li class="letter-item" onclick="speak('ஆ - AA')"> <!-- Add onclick event -->
+            <p class="letter-text">ஆ - AA</p>
+        </li>
+        <li class="letter-item" onclick="speak('இ - I')">
+            <p class="letter-text">இ - I</p>
+        </li>
+        <li class="letter-item"  onclick="speak('ஈ - EE')">
+            <p>ஈ - EE</p></li>
         <li class="letter-item"><p>உ - U</p></li>
         <li class="letter-item"><p>ஊ - OO</p></li>
         <li class="letter-item"><p>எ - E</p></li>
@@ -89,7 +96,7 @@
     <h1>Tamil Numbers 1-25</h1>
     <ul class="numbers-list">
         <!-- Display numbers in Tamil with English translations and pronunciation -->
-        <li class="number-item">1 - ஒன்று (One - ON-ruh)</li>
+        <li class="number-item" onclick="speak('1-ஒன்று')"><p>1 - ஒன்று</p></li>
         <li class="number-item">2 - இரண்டு (Two - ih-RAHN-doo)</li>
         <li class="number-item">3 - மூன்று (Three - MOO-n-doo)</li>
         <li class="number-item">4 - நான்கு (Four - NAHN-goo)</li>
@@ -121,7 +128,22 @@
     <button id="submitButton" type="submit">Complete Lesson</button>
   </form>  
 <script>
-// Update user score when the form is submitted
+// Update user score when the form is submitted 
+function speak(text) {
+    const utterance = new SpeechSynthesisUtterance();
+    utterance.lang = 'ta-IN'; // Tamil language code
+    utterance.text = text;
+
+    // Get the voices that support Tamil
+    const voices = window.speechSynthesis.getVoices().filter(voice => voice.lang === 'ta-IN');
+
+    // If Tamil voice is available, select it; otherwise, use the default voice
+    if (voices.length > 0) {
+        utterance.voice = voices[0];
+    }
+
+    window.speechSynthesis.speak(utterance);
+}
 document.getElementById('lessonForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
     const userId = document.getElementById("user_id").value;

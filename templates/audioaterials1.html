@@ -78,31 +78,23 @@ audio {
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>Audio Materials</h1>
-  <button class="back-button" ><a href="/connector" style="text-decoration: none; color: inherit;">Back</a></button>
-  <div class="section">
-    <h2>Tamil</h2>
+    <div class="container">
+        <h1>Audio Materials</h1>
+        <button class="back-button" ><a href="/connector" style="text-decoration: none; color: inherit;">Back</a></button>
+    <div class="section">
+    <h2>Hindi</h2>
     <div class="audio-list">
       <div class="audio-item">
         <h3>Greetings</h3>
         <audio controls>
-            
-          <source src="/audio/Greetings tamil.m4a" type="audio/mpeg">
+          <source src="/audio/greetingshindi.m4a" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
       </div>
       <div class="audio-item">
-        <h3>Introductions</h3>
+        <h3>Basic Conversations</h3>
         <audio controls>
-          <source src="/audio/Introductions tamil.m4a" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="audio-item">
-        <h3>Basic Questions</h3>
-        <audio controls>
-          <source src="/audio/Basic tamil.m4a" type="audio/mpeg">
+          <source src="/audio/Basic hindi.m4a" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
       </div>
@@ -110,68 +102,70 @@ audio {
         <h3>Common Expressions</h3>
         <audio controls>
             
-          <source src="/audio/common tamil.m4a" type="audio/mpeg">
+          <source src="/audio/common hindi.m4a" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
       </div>
       <div class="audio-item">
-        <h3>Daily Activities</h3>
+        <h3>Weather</h3>
         <audio controls>
-          <source src="/audio/Daily tamil.m4a" type="audio/mpeg">
+          <source src="/audio/weather hindi.m4a" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
       </div>
       <div class="audio-item">
         <h3>Directions</h3>
         <audio controls>
-          <source src="/audio/directions tamil.m4a" type="audio/mpeg">
+          <source src="/audio/directions hindi.m4a" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
       </div>
       <div class="audio-item">
         <h3>Food</h3>
         <audio controls>
-          <source src="/audio/food tamil.m4a" type="audio/mpeg">
+          <source src="/audio/food hindi.m4a" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
       </div>
       <div class="audio-item">
-        <h3>Emergency</h3>
+        <h3>Time and Date</h3>
         <audio controls>
-          <source src="/audio/emergency tamil.m4a" type="audio/mpeg">
+          <source src="/audio/time hindi.m4a" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
       </div>
       <div class="audio-item">
         <h3>Numbers</h3>
         <audio controls>
-          <source src="/audio/Numbers tamil.m4a" type="audio/mpeg">
+          <source src="/audio/Numbers hindi.m4a" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
       </div>
       <div class="audio-item">
-        <h3>Shopping</h3>
+        <h3>Travel</h3>
         <audio controls>
-          <source src="/audio/shopping tamil.m4a" type="audio/mpeg">
+          <source src="/audio/travel hindi.m4a" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
-      </div>
-      <div class="submit-button">
-        <form action="/update_score" method="POST">
-          <input type="hidden" name="user_id" value="{{ session.get('user_id') }}">
-          <button type="submit">Submit Score</button>
-        </form>
-      </div>
+    </div><br>
+    <div class="submit-button">
+      <form action="/update_score" method="POST">
+        <input type="hidden" name="user_id" value="{{ session.get('user_id') }}">
+        <button type="submit">Submit Score</button>
+      </form>
+    </div>
+  </div>
+  </div>
 </section>
 <script>
-  // Function to submit the form when audio finishes playing
-  function updateScore() {
-    document.getElementById('scoreForm').submit();
-  }
-
-  // Event listener for audio completion
-  const audioElement = document.getElementById('audioElement');
-  audioElement.addEventListener('ended', updateScore);
-</script>
+    // Function to submit the form when audio finishes playing
+    function updateScore() {
+      document.getElementById('scoreForm').submit();
+    }
+  
+    // Event listener for audio completion
+    const audioElement = document.getElementById('audioElement');
+    audioElement.addEventListener('ended', updateScore);
+  </script>
 </body>
 </html>

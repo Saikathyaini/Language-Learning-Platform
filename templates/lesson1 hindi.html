@@ -133,6 +133,16 @@
   </form>  
 <script>
 // Update user score when the form is submitted
+function speak(text) {
+    if ('speechSynthesis' in window) {
+        const speech = new SpeechSynthesisUtterance();
+        speech.text = text;
+        speech.lang = 'hi-IN'; // Tamil language code
+        window.speechSynthesis.speak(speech);
+    } else {
+        alert('Sorry, your browser does not support text-to-speech.');
+    }
+}
 document.getElementById('lessonForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
     const userId = document.getElementById("user_id").value;

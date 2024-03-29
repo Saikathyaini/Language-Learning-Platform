@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Language Cards</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: pink/*url("./static/jpg/language.jpg")*/;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: 0;
+        padding: 20px;
+        text-decoration: none;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        margin-top: 250px;
+    }
+    .card {
+        background-color:transparent;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 200px; /* Adjust the width of the card */
+        text-decoration: none;
+        margin: 0 10px; /* Adjust the margin to create space between cards */
+        transition: background-image 0.3s; /* Add transition for smooth effect */
+    }
+    /*.card:hover {
+        background-image: url("./static/jpg/background-hover.jpg"); /* Change background image on hover 
+    }*/
+    h2 {
+        color: #280808;
+        font-size: 24px;
+        margin-top: 0;
+        text-align: center;
+        text-decoration: none;
+    }
+    p {
+        color: #160505;
+        font-size: 16px;
+        text-decoration:wavy;
+    }
+    h2 a {
+        color: rgb(1, 7, 14); /* Set link color to black */
+        text-decoration: none; /* Remove underline */
+    }
+    h1 {
+        color: blue;
+        font-weight: bold;
+        margin-top: 0%;
+    }
+</style>
+</head>
+<body>
+    <h1><center> Interactive Lessons</center></h1>
+<div class="container">
+    <div class="card">
+        <h2><center><a href="/tamil lessons">TAMIL</a></center></h2>
+    </div>
+    <div class="card">
+        <h2><center><a href="/hindi lessons">HINDI</a></center></h2>
+    </div>
+    <div class="card">
+        <h2><center><a href="/kannada lessons">KANNADA</a></center></h2>
+    </div>
+</div>
+</body>
+</html>
