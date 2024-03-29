@@ -5,37 +5,64 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title> Kannada Lessons</title>
 <style>
-.centered-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(154, 189, 238)/*url("./static/jpg/language.jpg")*/;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 20px;
+    text-decoration: none;
 }
 
 .container {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 250px;
 }
 
-.box {
-  width: 200px; /* Adjust the width as needed */
-  height: 100px; /* Adjust the height as needed */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #dcb3b3;
+.card {
+    background-color:pink;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 200px; /* Adjust the width of the card */
+    text-decoration: none;
+    margin: 0 10px; /* Adjust the margin to create space between cards */
+    transition: background-image 0.3s; /* Add transition for smooth effect */
 }
 
-.full-width-box {
-  width: 50%;
+/* .card:hover {
+    background-image: url("./static/jpg/background-hover.jpg"); /* Change background image on hover 
+} */
+
+h2 {
+    color: #280808;
+    font-size: 24px;
+    margin-top: 0;
+    text-align: center;
+    text-decoration: none;
 }
 
-.back-button {
-  margin-bottom: 20px; /* Add some margin to separate the button from the cards */
+p {
+    color: #160505;
+    font-size: 16px;
+    text-decoration: wavy;
+}
+h2{
+  text-align: center;
+  font: size 30px; ;
+}
+h2 a {
+    color: rgb(1, 7, 14); /* Set link color to black */
+    text-decoration: none; /* Remove underline */
 }
 
+h1 {
+    color: blue;
+    font-weight: bold;
+    margin-top: 0%;
+}
 </style>
 </head>
 <body>
@@ -43,8 +70,12 @@
     <button class="back-button" onclick="goBack()">Back</button>
     <h2>Kannada Lessons</h2>
     <div class="container">
-      <div class="box full-width-box" onclick="window.location.href='/lesson1 kannada'">Lesson-1</div>
-      <div class="box full-width-box" onclick="window.location.href='/lesson2 kannada'">Lesson-2</div>
+      <div class="card" onclick="window.location.href='/lesson1 kannada'">
+        <h2>Lesson-1</h2>
+      </div>
+      <div class="card" onclick="window.location.href='/lesson2 kannada'">
+        <h2>Lesson-2</h2>
+      </div>
     </div>
   </section>
   <script>
