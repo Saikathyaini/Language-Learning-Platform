@@ -53,10 +53,11 @@
 <div class="container">
     <h1>Tamil Letters</h1>
     <ul class="letters-list">
-        <!-- Display Tamil letters with English translations -->
-        <li class="letter-item" onclick="speak('அ - A')"> 
+        <li class="letter-item" onclick="speakTamil('அ - A')"> 
             <p class="letter-text">அ - A</p>
         </li>
+        
+        
         <li class="letter-item" onclick="speak('ஆ - AA')"> <!-- Add onclick event -->
             <p class="letter-text">ஆ - AA</p>
         </li>
@@ -95,9 +96,8 @@
     
     <h1>Tamil Numbers 1-25</h1>
     <ul class="numbers-list">
-        <!-- Display numbers in Tamil with English translations and pronunciation -->
-        <li class="number-item" onclick="speak('ஒன்று')"><p>1 - ஒன்று</p></li>
-        <li class="number-item">2 - இரண்டு (Two - ih-RAHN-doo)</li>
+       <li class="number-item" onclick="speakTamil('ஒன்று')"><p>1 - ஒன்று</p></li>
+        <li class="number-item" onclick="speakTamil('இரண்டு')">2 - இரண்டு (Two - ih-RAHN-doo)</li> 
         <li class="number-item">3 - மூன்று (Three - MOO-n-doo)</li>
         <li class="number-item">4 - நான்கு (Four - NAHN-goo)</li>
         <li class="number-item">5 - ஐந்து (Five - AIH-ndoo)</li>
@@ -129,21 +129,17 @@
   </form>  
 <script>
 // Update user score when the form is submitted 
-function speak(text) {
+function speakTamil(text) {
     const utterance = new SpeechSynthesisUtterance();
-    utterance.lang = 'ta-IN'; // Tamil language code
+    utterance.lang = 'ta-IN'; // Set the language to Tamil
     utterance.text = text;
 
-    // Get the voices that support Tamil
-    const voices = window.speechSynthesis.getVoices().filter(voice => voice.lang === 'ta-IN');
-
-    // If Tamil voice is available, select it; otherwise, use the default voice
-    if (voices.length > 0) {
-        utterance.voice = voices[0];
-    }
-
-    window.speechSynthesis.speak(utterance);
+    // Speak the Tamil text
+    speechSynthesis.speak(utterance);
 }
+
+
+
 document.getElementById('lessonForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
     const userId = document.getElementById("user_id").value;
