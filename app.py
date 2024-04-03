@@ -6,8 +6,6 @@ from googletrans import Translator
 import pyttsx3
 import tempfile
 from models import db, User
-from io import BytesIO
-from jinja2.exceptions import TemplateNotFound
 from gtts import gTTS
 
 app = Flask(__name__, static_folder='static')
