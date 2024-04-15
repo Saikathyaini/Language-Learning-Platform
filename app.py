@@ -239,7 +239,6 @@ def progress():
                 'Listening Audio': user.audio_completed,
                 'Interactive Lessons': user.lessons_completed,
                 'Exercises Percentage': user.exercise_percentage,
-                'total percentage': progress_percentage
             }
 
             return render_template('progresstracking.html', progress_data=progress_data)
