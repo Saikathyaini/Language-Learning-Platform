@@ -1,12 +1,17 @@
-from flask import Flask, render_template, request, redirect, session, send_from_directory, send_file, jsonify
+from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory, send_file, Response
 from functools import wraps 
 import os
+from flask_sqlalchemy import SQLAlchemy
+from flask import make_response
+from gtts import gTTS
+from models import db, User
 from flask_migrate import Migrate
+from flask import request, jsonify
 from googletrans import Translator
 import pyttsx3
 import tempfile
-from models import db, User
-from gtts import gTTS
+from io import BytesIO
+from jinja2.exceptions import TemplateNotFound
 
 app = Flask(__name__, static_folder='static')
 app.secret_key = os.urandom(24)
@@ -17,8 +22,7 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 translator = Translator()
 engine = pyttsx3.init()
-TEMPLATES_DIR = os.path.join(app.root_path, 'templates')
-
+TEMPLATES_DIR = os.path.join('E:', 'MCA', 'templates')
 SUPPORTED_LANGUAGES = {
     'ta': 'Tamil',
     'kn': 'Kannada',
@@ -27,11 +31,7 @@ SUPPORTED_LANGUAGES = {
     'hi':'Hindi'
 }
 
-def recreate_tables():
-    with app.app_context():
-        db.create_all()
-
-recreate_tables()
+	
 
 @app.route('/')
 def home():
@@ -115,7 +115,7 @@ def complete_interactive_lesson():
         try:
             user = User.query.get(user_id)
             if user:
-                user.lessons_completed += 10
+                user.lessons_completed += 25
                 db.session.commit()
                 print("Score updated successfully")
                 return 'Score updated successfully', 200
@@ -216,7 +216,6 @@ def speak():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
 @app.route('/progresstracking')
 def progress():
     user_name = session.get('user_name')
@@ -240,6 +239,7 @@ def progress():
                 'Listening Audio': user.audio_completed,
                 'Interactive Lessons': user.lessons_completed,
                 'Exercises Percentage': user.exercise_percentage,
+                'total percentage': progress_percentage
             }
 
             return render_template('progresstracking.html', progress_data=progress_data)
@@ -277,7 +277,6 @@ def serve_audio(filename):
 @app.route('/jpg/<path:filename>')
 def serve_jpg(filename):
     return send_from_directory('static/jpg', filename)
-
 @app.route('/<page>')
 def dynamic_page(page):
     """
